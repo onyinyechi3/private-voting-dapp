@@ -1,9 +1,10 @@
 import type { AppProps } from "next/app";
-import { WagmiConfig, createConfig, http } from "wagmi";
+import { WagmiProvider, createConfig, http } from "wagmi";
 import { injected } from "wagmi/connectors";
 import { defineChain } from "viem";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+// Fhenix Devnet
 const fhenix = defineChain({
   id: 8008135,
   name: "Fhenix Devnet",
@@ -32,9 +33,9 @@ const queryClient = new QueryClient();
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <WagmiConfig config={config}>
+      <WagmiProvider config={config}>
         <Component {...pageProps} />
-      </WagmiConfig>
+      </WagmiProvider>
     </QueryClientProvider>
   );
 }
