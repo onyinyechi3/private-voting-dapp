@@ -5,5 +5,13 @@ import "@fhenixprotocol/contracts/FHE.sol";
 
 contract PrivateVoting {
     // Voting logic will go here
-    uint256 public totalVotes;
+    euint32 private totalVotes;
+
+    constructor() {
+        totalVotes = FHE.asEuint32(0);
+    }
+
+    function submitVote(euint32 encryptedVote) public {
+        totalVotes = FHE.add(totalVotes, encryptedVote);
+    }
 }

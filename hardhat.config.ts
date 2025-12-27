@@ -1,4 +1,5 @@
 import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-viem"; // Add this line!
 import * as dotenv from "dotenv";
 
 dotenv.config();
